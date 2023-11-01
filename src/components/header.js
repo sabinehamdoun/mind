@@ -12,10 +12,10 @@ const Header = () => {
 
   return (
     <div>
-      <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 px-7 sm:px-20">
+      <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 px-7 sm:px-28">
         <div className="flex justify-between">
           <Link href="/" className="font-bold text-2xl sm:text-4xl text-white flex">
-            mindspace
+          PixelPulse
           </Link>
           <div className="flex items-center">
             {!isMobileMenuOpen ? (
@@ -34,7 +34,7 @@ const Header = () => {
               </button>
             )}
             <ul
-              className={`hidden sm:flex list-none gap-4 sm:gap-3 md:gap-8 xl:12 mr-5 sm:mr-14 whitespace-nowrap overflow-hidden `}
+              className={`hidden sm:flex list-none gap-4 sm:gap-3 md:gap-8 xl:12 mr-5 sm:mr-0 whitespace-nowrap overflow-hidden `}
             >
               <li className="hover:text-white text-[#FFFFFFB2]">
                 <Link href="/">about us</Link>
@@ -43,7 +43,7 @@ const Header = () => {
                 <Link href="/">our work</Link>
               </li>
               <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/">our clients</Link>
+                <Link href="/clients">our clients</Link>
               </li>
               <li className="hover:text-white text-[#FFFFFFB2]">
                 <Link href="/">our team</Link>

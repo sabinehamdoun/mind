@@ -108,10 +108,43 @@
     color: inherit;
     text-decoration: none;
   }
+
+  .swiper-button-next:after {
+    background-color: #fe424c;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 60px;
+    margin-right: 10px;
+    margin-bottom: 150px;
+  }
+
+  .swiper-button-prev:after {
+    background-color: #fe424c;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 60px;
+    margin-left: 10px; 
+    margin-bottom: 150px;
+  }
   
   @media (prefers-color-scheme: dark) {
     html {
       color-scheme: dark;
     }
   }
+
+  
+@media screen and (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px !important;
+  }
+}
+
   
