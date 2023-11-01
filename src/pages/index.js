@@ -11,8 +11,7 @@ export default function Home() {
     <div>
       <Header />
       <Banner />
-      <CardGrid /> 
-      <Slider /> 
+      <CardGrid />  
       <Footer />
     </div>
   );
