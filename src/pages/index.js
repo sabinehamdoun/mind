@@ -1,10 +1,7 @@
 import CardGrid from "@/components/advertisement";
-import Banner from "@/components/banner"; 
-import Card from "@/components/card";
+import Banner from "@/components/banner";  
 import Footer from "@/components/footer";
-import Header from "@/components/header";
-import Slider from "@/components/slider";
-import axios from "@/utils/axios";
+import Header from "@/components/header"; 
 
 export default function Home() {
   return (

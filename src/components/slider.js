@@ -70,7 +70,7 @@ const Slider = () => {
     <div className="xl:container mx-auto py-10 sm:py-16 px-7 sm:px-28">
       <Swiper
         modules={[Navigation]}
-        spaceBetween={50}
+        spaceBetween={35}
         slidesPerView={slidesPerView}
         navigation
         onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -81,7 +81,7 @@ const Slider = () => {
         {data && data.map((slide, index) => (
           <SwiperSlide key={index}>
             <div>
-              <img src={slide.details.image} alt="Slide" /> 
+              <img src={slide.details.image} alt="Slide"/> 
               {index === activeIndex && (
                 <>
                   <h2 className="font-bold mt-7 text-lg">{slide.title}</h2>
