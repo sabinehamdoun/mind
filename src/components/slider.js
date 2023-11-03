@@ -81,7 +81,7 @@ const Slider = () => {
         {data && data.map((slide, index) => (
           <SwiperSlide key={index}>
             <div>
-              <img src={slide.details.image} alt="Slide"/> 
+              <img src={slide.image} alt="Slide"/> 
               {index === activeIndex && (
                 <>
                   <h2 className="font-bold mt-7 text-lg">{slide.title}</h2>
