@@ -12,8 +12,8 @@ const Header = () => {
 
   return (
     <div>
-      <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-28">
-        <div className="flex justify-between px-7 sm:px-0">
+      <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-12 lg:px-28">
+        <div className="flex justify-between gap-5 px-7 sm:px-0">
           <Link href="/" className="font-bold text-2xl sm:text-4xl text-white flex">
           PixelPulse
           </Link>
@@ -37,7 +37,7 @@ const Header = () => {
               className={`hidden sm:flex list-none gap-4 sm:gap-3 md:gap-8 xl:12 mr-5 sm:mr-0 whitespace-nowrap overflow-hidden `}
             >
               <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/">about us</Link>
+                <Link href="/about">about us</Link>
               </li>
               <li className="hover:text-white text-[#FFFFFFB2]">
                 <Link href="/">our work</Link>
@@ -46,7 +46,7 @@ const Header = () => {
                 <Link href="/clients">our clients</Link>
               </li>
               <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/">our team</Link>
+                <Link href="/teams">our team</Link>
               </li>
               <li className="hover:text-white text-[#FFFFFFB2]">
                 <Link href="/">contact us</Link>
@@ -61,16 +61,16 @@ const Header = () => {
               className={`flex flex-col sm:hidden list-none gap-7 text-xl text-center`}
             >
               <li>
-                <Link href="/">about us</Link>
+                <Link href="/about">about us</Link>
               </li>
               <li>
                 <Link href="/">our work</Link>
               </li>
               <li>
-                <Link href="/">our clients</Link>
+                <Link href="/clients">our clients</Link>
               </li>
               <li>
-                <Link href="/">our team</Link>
+                <Link href="/teams">our team</Link>
               </li>
               <li>
                 <Link href="/">contact us</Link>

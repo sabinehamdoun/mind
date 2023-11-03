@@ -115,7 +115,8 @@
     padding: 7px 15px;
     border-radius: 60px;
     margin-right: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 190px;
+    font-size: 35px !important;
   }
 
   .swiper-button-prev:after {
@@ -124,7 +125,8 @@
     padding: 7px 15px;
     border-radius: 60px;
     margin-left: 10px; 
-    margin-bottom: 150px;
+    margin-bottom: 190px;
+    font-size: 35px !important;
   }
   
   @media (prefers-color-scheme: dark) {

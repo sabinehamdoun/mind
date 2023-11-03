@@ -14,7 +14,7 @@ const Slider = () => {
   const swiperRef = useRef(null);
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(1);  
-  const [slidesPerView, setSlidesPerView] = useState(4.2);
+  const [slidesPerView, setSlidesPerView] = useState(3);
 
   const fetchSliderData = async () => {
     try {
@@ -67,7 +67,7 @@ const Slider = () => {
   }, [data]); 
   
   return (
-    <div className="xl:container mx-auto py-10 sm:py-16 px-7 sm:px-28">
+    <div className="xl:container mx-auto py-10 sm:py-16 px-7 sm:px-12 lg:px-28">
       <Swiper
         modules={[Navigation]}
         spaceBetween={35}

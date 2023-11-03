@@ -6,20 +6,20 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="bg-[#fe424c]">
-      <div className="2xl:container mx-auto px-5 sm:px-20 py-20 flex flex-col sm:flex-row gap-20 md:gap-24">
-        <div>
+      <div className="2xl:container mx-auto px-5 sm:px-12 lg:px-28 py-20 flex flex-col justify-center sm:justify-start sm:flex-row gap-20 md:gap-24">
+        <div className="flex flex-col mx-auto sm:mx-0 ">
           <h3 className="text-lg font-light pb-8">sitemap</h3>
           <ul className="whitespace-nowrap">
-            <Link href="/">
+            <Link href="/about">
               <li className="text-sm">about us</li>
             </Link>
             <Link href="/">
               <li className="text-sm">our work</li>
             </Link>
-            <Link href="/">
+            <Link href="/clients">
               <li className="text-sm">our clients</li>
             </Link>
-            <Link href="/">
+            <Link href="/teams">
               <li className="text-sm">our team</li>
             </Link>
             <Link href="/">
@@ -27,7 +27,7 @@ const Footer = () => {
             </Link>
           </ul>
         </div>
-        <div className="flex items-center gap-5 sm:ml-auto">
+        <div className="flex items-center justify-center sm:justify-end gap-5 sm:ml-auto">
           <Link href="/">
             <h3 className="text-3xl">PixelPulse</h3>
           </Link>
