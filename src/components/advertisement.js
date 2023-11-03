@@ -19,8 +19,6 @@ const CardGrid = () => {
     fetchLinksData();
   }, []);
 
-  console.log(data);
-
   return (
     <div className="2xl:container mx-auto px-5 sm:px-12 lg:px-28 py-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-8">

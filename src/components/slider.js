@@ -8,23 +8,22 @@ import "swiper/css/navigation";
 
 import { Navigation } from "swiper/core";
 import { useEffect, useRef, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const Slider = () => {
   const swiperRef = useRef(null);
   const [data, setData] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(1);  
+  const [activeIndex, setActiveIndex] = useState(1);
   const [slidesPerView, setSlidesPerView] = useState(3);
 
   const fetchSliderData = async () => {
     try {
-      const response = await axios.get("/api/fetchSlider");
-      setData(response.data.data.sections);
+      const response = await axios.get("/api/fetchLinks");
+      setData(response.data.data);
     } catch (error) {
       console.error(error);
     }
   };
-
 
   const handleSlideChange = () => {
     if (swiperRef.current) {
@@ -56,16 +55,18 @@ const Slider = () => {
     if (swiperRef.current) {
       swiperRef.current.on("slideChange", handleSlideChange);
     }
-  }, []); 
-   
+  }, []);
+
   useEffect(() => {
     fetchSliderData();
   }, []);
 
-    useEffect(() => {
-    console.log(data)
-  }, [data]); 
-  
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  console.log(data);
+
   return (
     <div className="xl:container mx-auto py-10 sm:py-16 px-7 sm:px-12 lg:px-28">
       <Swiper
@@ -74,23 +75,24 @@ const Slider = () => {
         slidesPerView={slidesPerView}
         navigation
         onSwiper={(swiper) => (swiperRef.current = swiper)}
-        initialSlide={activeIndex}  
-        centeredSlides={true}  
+        initialSlide={activeIndex}
+        centeredSlides={true}
         style={{ height: "400px" }}
       >
-        {data && data.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div>
-              <img src={slide.image} alt="Slide"/> 
-              {index === activeIndex && (
-                <>
-                  <h2 className="font-bold mt-7 text-lg">{slide.title}</h2>
-                  <p className="font-light mt-3 text-sm">{slide.subtitle}</p>
-                </>
-              )}
-            </div>
-          </SwiperSlide>
-        ))}
+        {data &&
+          data.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div>
+                <img src={slide.image} alt="Slide" />
+                {index === activeIndex && (
+                  <>
+                    <h2 className="font-bold mt-7 text-lg">{slide.title}</h2>
+                    <p className="font-light mt-3 text-sm">{slide.text}</p>
+                  </>
+                )}
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );
