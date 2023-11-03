@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({ index, imageSrc, altText, title, description }) => {
+const Card = ({ imageSrc, altText, title, description }) => {
   return (
     <div className='text-white font-light py-6'>
       <img src={imageSrc} alt={altText} />

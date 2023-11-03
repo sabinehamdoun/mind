@@ -1,13 +1,13 @@
 import Footer from '@/components/footer'
 import Header from '@/components/header'
-import Report from '@/components/report'
+// import Report from '@/components/report'
 import React from 'react'
 
 const Team = () => {
   return (
     <div>
         <Header />
-        <Report />
+        {/* <Report /> */}
         <Footer />
     </div>
   )

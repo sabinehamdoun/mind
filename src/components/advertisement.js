@@ -30,14 +30,14 @@ const CardGrid = () => {
             //   key={card.id}
             //   href={`/detail?cardId=${index}`}
             // >
-            <Link key={card.id} href={`/projects/${card.id}`}>
+            // <Link key={card.id} href={`/projects/${card.id}`}>
               <Card
                 //  key={card.id}
                 imageSrc={card.image}
                 title={card.title}
                 description={card.text}
               />
-            </Link>
+            // </Link>
           ))}
       </div>
     </div>
