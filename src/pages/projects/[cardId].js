@@ -1,29 +1,65 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const CardDetailPage = () => {
+const CardDetailPage = ({ data }) => {
   const router = useRouter();
-  const { cardId } = router.query;
-  const [data, setData] = useState(null);
-  
+  const cardId = router.query;
+  const [currentIndex, setCurrentIndex] = useState();
 
-  if (typeof cardId === 'undefined') {
+  useEffect(() => {
+    if (data) {
+      setCurrentIndex(
+        data.data.findIndex((item) => item.id === cardId)
+      );
+    }
+  }, [data, cardId]);
+
+  if (!data) {
     return <p>Loading...</p>;
   }
 
-  if (!data) {
-    return <p>Fetching project details...</p>;
-  }
-
+  const selectedCard = data[currentIndex]; 
+  
   return (
     <div>
       <h1>Project Details</h1>
-      <h2>Title: {data.title}</h2>
-      <p>Agency: {data.agency}</p>
-      <p>Client: {data.client}</p>
+      <p>Id: {cardId}</p>
+      <p>Title: {selectedCard.title}</p> 
     </div>
   );
 };
 
 export default CardDetailPage;
+
+// export async function getServerSideProps({ locale }) {
+//   try {
+//     const response = await axios.get("/projects", {
+//       headers: {
+//         "Accept-Language": locale,
+//       },
+//     });
+
+//     const data = response.data;
+
+//     return { props: { data } };
+//   } catch (error) {
+//     console.error(error);
+//     return { props: { data: null } };
+//   }
+// }
+
+ export async function GetServerSideProps({ locale }) {
+    let data;
+    await axios
+      .get("/projects", {
+        headers: {
+          "Accept-Language": locale,
+        },
+      })
+      .then((res) => {
+        data = res.data;
+      })
+      .catch(console.error);
+    return { props: { data } };
+  }

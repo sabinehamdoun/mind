@@ -31,11 +31,11 @@ const Report = () => {
         <div className="flex flex-col gap-3 p-4 uppercase">
           <h2 className="font-bold text-xl">Consolidated reporting</h2>
           <hr className={`w-full h-1 text-white`} />
-          <p className={`text-xl font-${activeSlide === 0 ? 'medium' : 'light'}`}>Estate planning & structuring</p>
+          <p className={`text-xl font-${activeSlide === 0 ? 'semibold' : 'light'}`}>Estate planning & structuring</p>
           <hr className={`w-${activeSlide === 0 ? 'full' : '[90%]'} h-1 text-gray`} />
-          <p className={`text-xl font-${activeSlide === 1 ? 'medium' : 'light'}`}>Real estate solutions</p>
+          <p className={`text-xl font-${activeSlide === 1 ? 'semibold' : 'light'}`}>Real estate solutions</p>
           <hr className={`w-${activeSlide === 1 ? 'full' : '[90%]'} h-1 text-gray`} />
-          <p className={`text-xl font-${activeSlide === 2 ? 'medium' : 'light'}`}>Private office</p>
+          <p className={`text-xl font-${activeSlide === 2 ? 'semibold' : 'light'}`}>Private office</p>
           <hr className={`w-${activeSlide === 2 ? 'full' : '[90%]'} h-1 text-gray`} />
           <div className="flex justify-center sm:justify-end gap-4 text-3xl text-white sm:mr-8 mt-3">
             <button className="border-2 rounded-[30px] hover:bg-[#fe424c] p-3" onClick={goToPrevSlide}>
