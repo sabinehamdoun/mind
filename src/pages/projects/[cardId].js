@@ -1,65 +1,91 @@
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "@/utils/axios";
 
-const CardDetailPage = ({ data }) => {
+function ProjectPage({ data }) {
   const router = useRouter();
-  const cardId = router.query;
+  const { cardId } = router.query;
   const [currentIndex, setCurrentIndex] = useState();
 
-  useEffect(() => {
-    if (data) {
-      setCurrentIndex(
-        data.data.findIndex((item) => item.id === cardId)
-      );
-    }
-  }, [data, cardId]);
+  console.log(cardId);
+
+  console.log(data);
+
+  // const currentIndex = data.data.findIndex((item) => item.id === cardId)
+  if (data) {
+    setCurrentIndex(data.data.findIndex((item) => item.id === cardId));
+  }
 
   if (!data) {
-    return <p>Loading...</p>;
+    return <p>No Data Found!</p>;
   }
 
-  const selectedCard = data[currentIndex]; 
-  
   return (
-    <div>
-      <h1>Project Details</h1>
-      <p>Id: {cardId}</p>
-      <p>Title: {selectedCard.title}</p> 
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="px-10 sm:px-20">
+        <h1 className="text-xl font-bold md:text-center text-[#4c4c4c] my-12">
+          {data.data[currentIndex].title}
+        </h1>
+        <div className="flex flex-col md:flex-row">
+          <div className="">
+            <hr className={`w-14 border-[1.5px] border-solid text-gray mb-8`} />
+            <p className="font-normal md:pr-28 text-sm leading-6">
+              {data.data[currentIndex].text}
+            </p>
+          </div>
+          <div className=" md:pl-24 mt-10 md:mt-0">
+            <h2 className={`text-sm mb-3 flex`}>
+              CLIENT:{" "}
+              <span className="ml-2 flex">
+                {" "}
+                {data.data[currentIndex].client}
+              </span>
+            </h2>
+            <hr className={`w-full h-1 border-[#2e2e2e] `} />
+            <p className={`text-sm  my-3 flex`}>
+              DIRECTOR:{" "}
+              <span className="ml-2 ">
+                {" "}
+                {data.data[currentIndex].directors}
+              </span>
+            </p>
+            <hr className={`w-full h-1 border-[#2e2e2e]`} />
+            <p className={`text-sm  my-3 flex`}>
+              DP:{" "}
+              <span className="ml-2">
+                {" "}
+                {data.data[currentIndex].cinematographer}
+              </span>
+            </p>
+            <hr className={`w-full h-1 border-[#2e2e2e] `} />
+            <p className={`text-sm flex my-3`}>
+              AGENCY:{" "}
+              <span className="ml-2"> {data.data[currentIndex].agency}</span>
+            </p>
+            <hr className={`w-full h-1 border-[#2e2e2e] `} />
+          </div>
+        </div>
+        <hr className={`w-full h-1 border-[#2e2e2e] mt-24`} />
+
+      </div>
     </div>
   );
-};
+}
 
-export default CardDetailPage;
+export default ProjectPage;
 
-// export async function getServerSideProps({ locale }) {
-//   try {
-//     const response = await axios.get("/projects", {
-//       headers: {
-//         "Accept-Language": locale,
-//       },
-//     });
-
-//     const data = response.data;
-
-//     return { props: { data } };
-//   } catch (error) {
-//     console.error(error);
-//     return { props: { data: null } };
-//   }
-// }
-
- export async function GetServerSideProps({ locale }) {
-    let data;
-    await axios
-      .get("/projects", {
-        headers: {
-          "Accept-Language": locale,
-        },
-      })
-      .then((res) => {
-        data = res.data;
-      })
-      .catch(console.error);
-    return { props: { data } };
-  }
+export async function getServerSideProps({ locale, query }) {
+  let data;
+  await axios
+    .get("/projects", {
+      headers: {
+        "Accept-Language": locale,
+      },
+    })
+    .then((res) => {
+      data = res.data;
+      console.log(data);
+    })
+    .catch(console.error);
+  return { props: { data } };
+}
