@@ -24,7 +24,7 @@ const CardGrid = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-8">
         {data &&
           data.map((card, index) => (
-            <Link key={card.id} href={`/projects/${index}`}>
+            <Link key={card.id} href={`/projects/${card.id}`}>
               <Card
                 imageSrc={card.image}
                 title={card.title}
