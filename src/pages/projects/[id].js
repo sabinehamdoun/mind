@@ -1,10 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "@/utils/axios";
+import { gsap } from "gsap";
+
 function ProjectPage({ data }) {
   const router = useRouter();
+  const textRef = useRef(null);
+  const [typedText, setTypedText] = useState("");
 
-  const selectedItem = data.data.findIndex(item => item.id === parseInt(router.query.id));
+  const selectedItem = data.data.findIndex(
+    (item) => item.id === parseInt(router.query.id)
+  );
+
+  useEffect(() => {
+    const text = data.data[selectedItem].text;
+
+    if (text) {
+      const typeText = (currentIndex) => {
+        if (currentIndex < text.length) {
+          setTypedText((prevText) => prevText + text[currentIndex]);
+          setTimeout(() => {
+            typeText(currentIndex + 1);
+          }, 50);  
+        }
+      };
+
+      gsap.to(textRef.current, {
+        opacity: 1,
+        duration: 2,
+        ease: "power1.inOut",
+        delay: 0, 
+      });
+
+      typeText(0);
+    }
+  }, [data.data[selectedItem].text]);
 
   return (
     <div className="min-h-screen flex items-center justify-center 2xl:container mx-auto">
@@ -14,10 +44,18 @@ function ProjectPage({ data }) {
         </h1>
         <div className="flex flex-col md:flex-row gap-16">
           <div className="flex-1">
-            <hr className={`w-14 border-[1.5px] border-solid text-gray mb-8`} />
-            <p className="font-normal md:pr-28 text-sm leading-6">
-              {data.data[selectedItem].text}
-            </p>
+            <hr
+              className={`w-14 border-[1.5px] border-solid text-gray mb-8`}
+            />
+            {data.data[selectedItem].text && (
+              <p
+                ref={textRef}
+                style={{ opacity: 0 }}
+                className="font-normal md:pr-28 text-sm leading-6"
+              >
+                {typedText}
+              </p>
+            )}
           </div>
           <div className="flex-1 mt-10 md:mt-0 whitespace-nowrap">
             <h2 className={`text-sm mb-3 flex`}>

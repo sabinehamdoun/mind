@@ -1,6 +1,46 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+const animatePerson = (nameRef, roleRef) => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(nameRef, {
+    opacity: 100,
+    y: 20,
+    duration: 1,
+    delay: 0.5,
+    scrollTrigger: {
+      trigger: nameRef,
+      start: 'top 100%',
+      end: 'bottom 20%',
+      scrub: 1,
+    },
+  });
+
+  gsap.from(roleRef, {
+    opacity: 100,
+    y: 20,
+    duration: 1,
+    delay: 0.7,
+    scrollTrigger: {
+      trigger: roleRef,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      scrub: 1,
+    },
+  }); 
+};
 
 const Person = ({ imageSrc, borderColor, bgColor, name, role }) => {
+  const nameRef = useRef(null);
+  const roleRef = useRef(null);
+
+  useEffect(() => {
+    animatePerson(nameRef.current);
+    animatePerson(roleRef.current);
+  }, []);
+
   return (
     <div className={`flex flex-col items-center justify-center pb-7`}>
       <div
@@ -18,8 +58,12 @@ const Person = ({ imageSrc, borderColor, bgColor, name, role }) => {
           <div className={`w-3 h-3 ${bgColor} rounded-full`}></div>
         </div>
         <div className="absolute left-1/2 ml-2 top-2">
-          <div className="font-light text-xs sm:text-sm">{name}</div>
-          <div className="font-semibold text-xs sm:text-sm">{role}</div>
+          <div ref={nameRef} className="font-light text-xs sm:text-sm">
+            {name}
+          </div>
+          <div ref={roleRef} className="font-semibold text-xs sm:text-sm">
+            {role}
+          </div>
         </div>
       </div>
     </div>
