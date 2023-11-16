@@ -21,13 +21,13 @@ function ProjectPage({ data }) {
           setTypedText((prevText) => prevText + text[currentIndex]);
           setTimeout(() => {
             typeText(currentIndex + 1);
-          }, 50);  
+          }, 35);  
         }
       };
 
       gsap.to(textRef.current, {
         opacity: 1,
-        duration: 2,
+        duration: 1,
         ease: "power1.inOut",
         delay: 0, 
       });
