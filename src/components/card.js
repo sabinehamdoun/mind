@@ -10,9 +10,12 @@ const Card = ({ imageSrc, altText, title, description }) => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const first = gsap.set(cardRef.current, { opacity: 0, y: 50 });
-
-    const card = gsap.to(cardRef.current, {
+    const card = gsap.fromTo(
+      cardRef.current, 
+      { 
+        opacity: 0, y: 50 
+      },
+      {
       opacity: 1,
       y: 0,
       duration: 2,
@@ -21,16 +24,16 @@ const Card = ({ imageSrc, altText, title, description }) => {
         trigger: cardRef.current,
         start: 'top 80%',
         end: 'bottom 20%',
-        scrub: 1,
       },
-    });
+    }
+  
+    );
 
     const title = gsap.timeline({
       scrollTrigger: {
         trigger: titleRef.current,
         start: 'top 100%',
         end: 'bottom 20%',
-        scrub: 1,
       },
     })
       .fromTo(
@@ -81,13 +84,12 @@ const Card = ({ imageSrc, altText, title, description }) => {
           trigger: descriptionRef.current,
           start: 'top 80%',
           end: 'bottom 20%',
-          scrub: 1,
         },
       }
     );
 
     return () => {
-      first.kill();
+      // first.kill();
       card.kill();
       title.kill();
       description.kill();

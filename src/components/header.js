@@ -49,7 +49,7 @@ const Header = () => {
                 <Link href="/teams">our team</Link>
               </li>
               <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/">contact us</Link>
+                <Link href="/contact">contact us</Link>
               </li>
             </ul>
           </div>
@@ -73,7 +73,7 @@ const Header = () => {
                 <Link href="/teams">our team</Link>
               </li>
               <li>
-                <Link href="/">contact us</Link>
+                <Link href="/contact">contact us</Link>
               </li>
             </ul>
           </div>

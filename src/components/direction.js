@@ -12,26 +12,24 @@ const Direction = ({ even, odd }) => {
     gsap.from(textRef.current, {
       opacity: 1,
       y: 50,
-      duration: 2,
+      duration: 1,
       ease: "power2.out",
       scrollTrigger: {
         trigger: textRef.current,
         start: "top 80%",
         end: "bottom 20%",
-        scrub: 2,
       },
     });
 
     gsap.from(imageRef.current, {
       opacity: 1,
       x: -50,
-      duration: 2,
+      duration: 1,
       ease: "power2.out",
       scrollTrigger: {
         trigger: imageRef.current,
         start: "top 80%",
         end: "bottom 20%",
-        scrub: 2,
       },
     });
   }, [even, odd]);
