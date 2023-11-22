@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { MdOutlineCancel } from "react-icons/md";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { gsap } from "gsap";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [router.asPath]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleLinkHover = (e) => {
+    gsap.to(e.target, {
+      borderBottom: "4px solid #fe424c", 
+      duration: 0.3,
+    });
+  };
+
+  const handleLinkLeave = (e) => {
+    gsap.to(e.target, {
+      borderBottom: "none",
+      duration: 0.3,
+    });
   };
 
   return (
@@ -15,7 +36,7 @@ const Header = () => {
       <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-12 lg:px-28">
         <div className="flex justify-between gap-5 px-7 sm:px-0">
           <Link href="/" className="font-bold text-2xl sm:text-4xl text-white flex">
-          PixelPulse
+            PixelPulse
           </Link>
           <div className="flex items-center">
             {!isMobileMenuOpen ? (
@@ -36,20 +57,20 @@ const Header = () => {
             <ul
               className={`hidden sm:flex list-none gap-4 sm:gap-3 md:gap-8 xl:12 mr-5 sm:mr-0 whitespace-nowrap overflow-hidden `}
             >
-              <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/about">about us</Link>
+              <li className={`text-[#FFFFFFB2] hover:text-white ${router.pathname === "/about" ? "text-white" : ""}`}>
+                <Link href="/about" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>about us</Link>
               </li>
-              <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/">our work</Link>
+              <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/" ? "text-white" : ""}`}>
+                <Link href="/" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>our work</Link>
               </li>
-              <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/clients">our clients</Link>
+              <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/clients" ? "text-white" : ""}`}>
+                <Link href="/clients" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>our clients</Link>
               </li>
-              <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/teams">our team</Link>
+              <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/teams" ? "text-white" : ""}`}>
+                <Link href="/teams" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>our team</Link>
               </li>
-              <li className="hover:text-white text-[#FFFFFFB2]">
-                <Link href="/contact">contact us</Link>
+              <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/contact" ? "text-white" : ""}`}>
+                <Link href="/contact" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>contact us</Link>
               </li>
             </ul>
           </div>
@@ -78,7 +99,7 @@ const Header = () => {
             </ul>
           </div>
         )}
-      </div> 
+      </div>
     </div>
   );
 };

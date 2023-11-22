@@ -1,3 +1,4 @@
+import Cursor from '@/components/cursor';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Person from '@/components/person';
@@ -18,6 +19,7 @@ const Team = () => {
 
   return (
     <div>
+      <Cursor />
       <Header />
       <Report />
       <div className="2xl:container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-5 sm:px-12 lg:px-28 pb-20 gap-2">

@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>NextJs</title>
       </Head>
-      <main>
+      <main className="">
         <Component {...pageProps} />
       </main>
     </>

@@ -2,6 +2,8 @@ import { gsap } from "gsap";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import React, { useEffect } from "react";
+import ContactForm from "@/components/form";
+import Cursor from "@/components/cursor";
 
 const ContactUs = () => {
   useEffect(() => {
@@ -34,6 +36,7 @@ const ContactUs = () => {
 
   return (
     <div>
+      <Cursor />
       <Header />
 
       <div className="flex flex-col relative items-center justify-center py-20 pb-60 sm:pb-48">
@@ -70,6 +73,7 @@ const ContactUs = () => {
         </div>
       </div>
 
+      <ContactForm />
       <Footer />
     </div>
   );
