@@ -45,24 +45,24 @@ const ContactForm = () => {
     const trimmedMessage = formData.message.trim();
 
     if (!trimmedName) {
-      errors.name = "Name is required";
+      errors.name = "Please fill in the name";
     } else if (!isValidName(trimmedName)) {
       errors.name = "Invalid name. Only letters are allowed";
     }
 
     if (!trimmedEmail) {
-      errors.email = "Email is required";
+      errors.email = "Please fill in the email";
     } else if (!isValidEmail(trimmedEmail)) {
       errors.email = "Invalid email address";
     }
     if (!trimmedMessage) {
-      errors.message = "Message is required";
+      errors.message = "Please fill in the message";
     }
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      console.log("Form data submitted:", {
+      console.log("Data:", {
         name: trimmedName,
         email: trimmedEmail,
         message: trimmedMessage,
@@ -94,8 +94,9 @@ const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
-            className="border-1 rounded-lg py-4 px-4 w-full sm:w-96"
+            className={`border-1 rounded-lg py-4 px-4 w-full sm:w-96 ${
+              formErrors.name && "border-red-500"
+            }`}
           />
           <div className={`error text-[#ed5454] h-3`}>{formErrors.name}</div>
         </div>
@@ -107,8 +108,9 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
-            className="border-1 rounded-lg py-4 px-4 w-full sm:w-96"
+            className={`border-1 rounded-lg py-4 px-4 w-full sm:w-96 ${
+              formErrors.email && "border-red-500"
+            }`}
           />
           <div className="error text-[#ed5454] h-3">{formErrors.email}</div>
         </div>
@@ -119,9 +121,10 @@ const ContactForm = () => {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            required
             rows={3}
-            className="border-1 rounded-lg py-3 px-4 w-full sm:w-96"
+            className={`border-1 rounded-lg py-3 px-4 w-full sm:w-96 ${
+              formErrors.message && "border-red-500"
+            }`}
           />
           <div className="error text-[#ed5454] h-3">{formErrors.message}</div>
         </div>

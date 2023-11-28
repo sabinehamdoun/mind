@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MdOutlineCancel } from "react-icons/md";
@@ -8,6 +8,11 @@ import { gsap } from "gsap";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const underAbout = useRef(null);
+  const underWork = useRef(null);
+  const underClients = useRef(null);
+  const underTeam = useRef(null);
+  const underContact = useRef(null);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -17,20 +22,29 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleLinkHover = (e) => {
-    gsap.to(e.target, {
-      borderBottom: "4px solid #fe424c", 
-      duration: 0.3,
-    });
+  const handleLinkHover = (e, underRef) => {
+    gsap.fromTo(
+      underRef.current,
+      {
+        width: "0%",
+      },
+      {
+        width: "50%",
+        duration: 0.3,
+        ease: "ease-in",
+      }
+    );
   };
 
-  const handleLinkLeave = (e) => {
-    gsap.to(e.target, {
-      borderBottom: "none",
-      duration: 0.3,
-    });
+  const handleLinkLeave = (e, underRef) => {
+    if (!router.pathname.includes(e.currentTarget.getAttribute("href"))) {
+      gsap.to(underRef.current, {
+        width: "0%",
+        duration: 0.3,
+        ease: "ease-in",
+      });
+    }
   };
-
   return (
     <div>
       <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-12 lg:px-28">
@@ -58,19 +72,34 @@ const Header = () => {
               className={`hidden sm:flex list-none gap-4 sm:gap-3 md:gap-8 xl:12 mr-5 sm:mr-0 whitespace-nowrap overflow-hidden `}
             >
               <li className={`text-[#FFFFFFB2] hover:text-white ${router.pathname === "/about" ? "text-white" : ""}`}>
-                <Link href="/about" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>about us</Link>
+                <Link href="/about" onMouseEnter={(e) => handleLinkHover(e, underAbout)} onMouseLeave={(e) => handleLinkLeave(e, underAbout)}>
+                    about us
+                    <hr className={`underline mx-auto border-b-2 rounded-lg border-[#fe424c] ${router.pathname === "/about" ? "w-1/2" : " w-0"}`} ref={underAbout} />
+                </Link>
               </li>
               <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/" ? "text-white" : ""}`}>
-                <Link href="/" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>our work</Link>
+                <Link href="/" onMouseEnter={(e) => handleLinkHover(e, underWork)} onMouseLeave={(e) => handleLinkLeave(e, underWork)}>
+                    our work
+                    <hr className={`underline mx-auto border-b-2 rounded-lg border-[#fe424c] ${router.pathname === "/" ? "w-1/2" : " w-0"}`} ref={underWork} />
+                </Link>
               </li>
               <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/clients" ? "text-white" : ""}`}>
-                <Link href="/clients" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>our clients</Link>
+                  <Link href="/clients" onMouseEnter={(e) => handleLinkHover(e, underClients)} onMouseLeave={(e) => handleLinkLeave(e, underClients)}>
+                    our clients
+                    <hr className={`underline mx-auto border-b-2 rounded-lg border-[#fe424c] ${router.pathname === "/clients" ? "w-1/2" : " w-0"}`} ref={underClients} />
+                </Link>
               </li>
               <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/teams" ? "text-white" : ""}`}>
-                <Link href="/teams" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>our team</Link>
+                <Link href="/teams" onMouseEnter={(e) => handleLinkHover(e, underTeam)} onMouseLeave={(e) => handleLinkLeave(e, underTeam)}>
+                    our team
+                    <hr className={`underline mx-auto border-b-2 rounded-lg border-[#fe424c] ${router.pathname === "/teams" ? "w-1/2" : " w-0"}`} ref={underTeam} />
+                </Link>
               </li>
               <li className={`hover:text-white text-[#FFFFFFB2] ${router.pathname === "/contact" ? "text-white" : ""}`}>
-                <Link href="/contact" onMouseEnter={handleLinkHover} onMouseLeave={handleLinkLeave}>contact us</Link>
+                <Link href="/contact" onMouseEnter={(e) => handleLinkHover(e, underContact)} onMouseLeave={(e) => handleLinkLeave(e, underContact)}>
+                    contact us
+                    <hr className={`underline mx-auto border-b-2 rounded-lg border-[#fe424c] ${router.pathname === "/contact" ? "w-1/2" : " w-0"}`} ref={underContact} />
+                </Link>
               </li>
             </ul>
           </div>

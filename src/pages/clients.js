@@ -1,3 +1,4 @@
+import ClickableImg from '@/components/clickable-img'
 import Cursor from '@/components/cursor'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
@@ -10,6 +11,7 @@ const Clients = () => {
       <Cursor />
         <Header />
         <Slider />
+        <ClickableImg />
         <Footer />
     </div>
   )

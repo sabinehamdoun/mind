@@ -117,7 +117,7 @@
     padding: 7px 15px;
     border-radius: 60px;
     margin-right: 10px;
-    margin-bottom: 190px;
+    /* margin-bottom: 190px; */
     font-size: 35px !important;
   }
 
@@ -127,7 +127,7 @@
     padding: 7px 15px;
     border-radius: 60px;
     margin-left: 10px; 
-    margin-bottom: 190px;
+    /* margin-bottom: 190px; */
     font-size: 35px !important;
   }
   

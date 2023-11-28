@@ -89,7 +89,6 @@ const Card = ({ imageSrc, altText, title, description }) => {
     );
 
     return () => {
-      // first.kill();
       card.kill();
       title.kill();
       description.kill();
