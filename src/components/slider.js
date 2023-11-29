@@ -77,7 +77,8 @@ const Slider = () => {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         initialSlide={activeIndex}
         centeredSlides={true}
-        style={{ height: "300px"}}
+        className="swipe"
+        style={{ height: "450px"}}
       >
         {data &&
           data.map((slide, index) => (

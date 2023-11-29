@@ -34,7 +34,7 @@ const ClickableImgSlider = () => {
         slidesPerView={1}
         navigation
         onSlideChange={(swiper) => handleSlideChange(swiper)}
-        className="sm:w-1/2 mx-auto" 
+        className="sm:w-1/2 mx-auto click" 
       >
         {slideData.map((slide, index) => (
           <SwiperSlide key={index}>

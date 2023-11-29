@@ -111,13 +111,32 @@
     text-decoration: none;
   }
 
+  .swipe .swiper-button-next:after {
+    background-color: #fe424c;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 60px;
+    margin-right: 10px;
+    margin-bottom: 190px;
+    font-size: 35px !important;
+  }
+
+  .swipe .swiper-button-prev:after {
+    background-color: #fe424c;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 60px;
+    margin-left: 10px; 
+    margin-bottom: 190px;
+    font-size: 35px !important;
+  }
+
   .swiper-button-next:after {
     background-color: #fe424c;
     color: white;
     padding: 7px 15px;
     border-radius: 60px;
     margin-right: 10px;
-    /* margin-bottom: 190px; */
     font-size: 35px !important;
   }
 
@@ -127,7 +146,6 @@
     padding: 7px 15px;
     border-radius: 60px;
     margin-left: 10px; 
-    /* margin-bottom: 190px; */
     font-size: 35px !important;
   }
   
@@ -148,6 +166,14 @@
   .swiper-button-prev::after,
   .swiper-button-next::after {
     font-size: 20px !important;
+    padding: 5px 11px;
+
+  }
+
+  .swipe .swiper-button-prev::after,
+  .swipe .swiper-button-next::after {
+    font-size: 20px !important;
+    padding: 5px 11px;
   }
 }
 

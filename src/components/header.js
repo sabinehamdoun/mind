@@ -37,7 +37,10 @@ const Header = () => {
   };
 
   const handleLinkLeave = (e, underRef) => {
-    if (!router.pathname.includes(e.currentTarget.getAttribute("href"))) {
+    const linkPath = e.currentTarget.getAttribute("href");
+    const currentPath = router.pathname;
+  
+    if (!currentPath.includes(linkPath)) {
       gsap.to(underRef.current, {
         width: "0%",
         duration: 0.3,
@@ -45,6 +48,7 @@ const Header = () => {
       });
     }
   };
+  
   return (
     <div>
       <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-12 lg:px-28">
