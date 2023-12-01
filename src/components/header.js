@@ -51,7 +51,7 @@ const Header = () => {
   
   return (
     <div>
-      <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-12 lg:px-28">
+      <div className="2xl:container mx-auto font-semibold py-10 sm:py-16 sm:px-12 lg:px-28 relative z-50">
         <div className="flex justify-between gap-5 px-7 sm:px-0">
           <Link href="/" className="font-bold text-2xl sm:text-4xl text-white flex">
             PixelPulse

@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="bg-[#fe424c]">
-      <div className="2xl:container mx-auto px-5 sm:px-12 lg:px-28 py-20 flex flex-col justify-center sm:justify-start sm:flex-row gap-20 md:gap-24">
+    <div className="bg-[#fe424c] relative z-50">
+      <div className="2xl:container mx-auto px-5 sm:px-12 lg:px-28 py-20 flex flex-col justify-center sm:justify-start sm:flex-row gap-20 md:gap-24 relative z-50">
         <div className="flex flex-col mx-auto sm:mx-0 ">
           <h3 className="text-lg font-light pb-8">sitemap</h3>
           <ul className="whitespace-nowrap">

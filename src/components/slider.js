@@ -68,7 +68,7 @@ const Slider = () => {
   console.log(data);
 
   return (
-    <div className="xl:container mx-auto py-10 sm:py-16 px-7 sm:px-12 lg:px-28">
+    <div className="xl:container mx-auto py-10 sm:py-16 px-7 sm:px-12 lg:px-28 ">
       <Swiper
         modules={[Navigation]}
         spaceBetween={35}

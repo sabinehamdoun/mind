@@ -35,7 +35,7 @@ const Direction = ({ even, odd }) => {
   }, [even, odd]);
 
   return (
-    <div className="2xl:container mx-auto px-7 sm:px-10 lg:px-28 pb-10 sm:pb-20">
+    <div className="2xl:container mx-auto px-7 sm:px-10 lg:px-28 pb-10 sm:pb-20 relative -z-50">
       {even && (
         <div className="sm:relative w-full">
           <div

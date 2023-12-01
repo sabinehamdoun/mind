@@ -148,6 +148,10 @@
     margin-left: 10px; 
     font-size: 35px !important;
   }
+
+  .black-text {
+    color: black !important;
+  }
   
   @media (prefers-color-scheme: dark) {
     html {

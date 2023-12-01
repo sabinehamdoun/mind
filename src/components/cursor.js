@@ -17,19 +17,25 @@ const Cursor = () => {
       duration: 0.9,
     });
 
-    // const isLink = e.target.tagName.toLowerCase() === "a";
+    const isLink = e.target.tagName.toLowerCase() === "a";
 
-    // if (isLink) {
-    //   gsap.to(cursorRef.current, {
-    //     scale: 2,
-    //     duration: 0.5,
-    //   });
-    // } else {
-    //   gsap.to(cursorRef.current, {
-    //     scale: 1,
-    //     duration: 0.5,
-    //   });
-    // }
+    if (isLink) {
+      gsap.to(cursorRef.current, {
+        scale: 2,
+        duration: 0.5,
+      });
+
+      e.target.classList.add("black-text");
+    } else {
+      gsap.to(cursorRef.current, {
+        scale: 1,
+        duration: 0.5,
+      });
+
+      document.querySelectorAll("a").forEach((link) => {
+        link.classList.remove("black-text");
+      });
+    }
   };
 
   useEffect(() => {
@@ -52,11 +58,11 @@ const Cursor = () => {
     <div>
       <div
         ref={cursorRef}
-        className="w-8 h-8 rounded-3xl fixed bg-white z-50"
+        className="w-8 h-8 rounded-3xl fixed bg-white"
       ></div>
       <div
         ref={followerRef}
-        className="w-24 h-24 bg-transparent border-2 border-solid border-[#fe424c] rounded-[90px] fixed z-20"
+        className="w-24 h-24 bg-transparent border-2 border-solid border-[#fe424c] rounded-[90px] fixed -mt-8 -ml-8"
       ></div>
     </div>
   );
