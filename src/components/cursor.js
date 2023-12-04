@@ -55,14 +55,14 @@ const Cursor = () => {
   }, []);
 
   return (
-    <div className="relative z-10">
+    <div className="">
       <div
         ref={cursorRef}
-        className="w-8 h-8 rounded-3xl fixed bg-white"
+        className="w-8 h-8 rounded-3xl fixed bg-white z-50 ml-5 mt-5"
       ></div>
       <div
         ref={followerRef}
-        className="w-24 h-24 bg-transparent border-2 border-solid border-[#fe424c] rounded-[90px] fixed -mt-8 -ml-8"
+        className="w-24 h-24 bg-transparent border-2 border-solid border-[#fe424c] rounded-[90px] fixed z-40"
       ></div>
     </div>
   );
