@@ -55,7 +55,7 @@ const Cursor = () => {
   }, []);
 
   return (
-    <div>
+    <div className="relative z-10">
       <div
         ref={cursorRef}
         className="w-8 h-8 rounded-3xl fixed bg-white"
